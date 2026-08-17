@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Primary palette */
+  --color-sky-light: #e0f2fe;
+  --color-sky: #38bdf8;
+  --color-sky-dark: #0284c7;
+  --color-navy: #1e293b;
+  --color-navy-dark: #0f172a;
+
+  /* Accent colors */
+  --color-amber: #f59e0b;
+  --color-amber-light: #fbbf24;
+  --color-amber-dark: #d97706;
+
+  /* Story card colors */
+  --color-emerald: #10b981;
+  --color-emerald-light: #d1fae5;
+  --color-indigo: #6366f1;
+  --color-indigo-light: #e0e7ff;
+  --color-rose: #f43f5e;
+  --color-rose-light: #ffe4e6;
+
+  /* Neutrals */
+  --color-cream: #fffbeb;
+  --color-white: #ffffff;
+
+  /* Semantic */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-navy);
+
+  /* Typography */
+  --font-sans: "Nunito", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Border radius */
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+}
+
+/* Base styles for kid-friendly app */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+  touch-action: manipulation;
+  /* Safe area support for notches and home indicators */
+  --safe-area-top: env(safe-area-inset-top, 0);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0);
+  --safe-area-left: env(safe-area-inset-left, 0);
+  --safe-area-right: env(safe-area-inset-right, 0);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#__next, main {
+  height: 100%;
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior: none;
+}
+
+/* Radar sweep animation */
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Blip pulse animation */
+@keyframes blip-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+/* Plane fly-by animation */
+@keyframes fly-by {
+  0% { transform: translateX(-100px) translateY(20px); }
+  100% { transform: translateX(calc(100vw + 100px)) translateY(-40px); }
+}
+
+/* Waveform animation */
+@keyframes waveform {
+  0%, 100% { height: 4px; }
+  50% { height: 20px; }
+}
+
+/* Card bounce in */
+@keyframes bounce-in {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Speaking dot pulse */
+@keyframes speaking-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Safe area utilities for notch/home indicator */
+.pt-safe {
+  padding-top: max(16px, var(--safe-area-top));
+}
+
+.pb-safe {
+  padding-bottom: max(16px, var(--safe-area-bottom));
+}
+
+.px-safe {
+  padding-left: max(16px, var(--safe-area-left));
+  padding-right: max(16px, var(--safe-area-right));
+}
